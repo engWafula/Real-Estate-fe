@@ -24,7 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "codegen:schema": "npx apollo client:download-schema --endpoint=http://localhost:9000/api",
+    "codegen:generate": ""
   },
   "eslintConfig": {
     "extends": [
@@ -44,5 +46,11 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:9000"
+  "proxy": "http://localhost:9000",
+  "devDependencies": {
+    "apollo": "^2.34.0"
+  },
+  "resolutions": {
+    "graphql": "^15.5.1."
+  }
 }
