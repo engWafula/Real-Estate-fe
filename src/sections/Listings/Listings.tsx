@@ -1,7 +1,16 @@
 
 import {useQuery,useMutation} from '@apollo/client';
-import {ListingsData,deleteListingData,deleteListingVariables} from './types';
+// import {ListingsData,deleteListingData,deleteListingVariables} from './types';
 import gql from 'graphql-tag';
+import { Listings as ListingsData} from './__generated__/Listings';
+import {DeleteListing as deleteListingData} from './__generated__/DeleteListing';
+import {DeleteListingVariables as deleteListingVariables } from './__generated__/DeleteListing';
+import { List,Avatar,Button,Spin,Alert} from 'antd';
+import './styles/listings.css'
+import   ListingsSkeleton from  "./components/ListingsSkeleton/ListingsSkeleton";
+
+
+
 
 interface Props{
   title: string;
@@ -46,43 +55,49 @@ export default function  Listings({title}:Props) {
   const listings=data?data.listings:null;
 
   if(loading){
-    return <div>Loading...</div>
+    return <div className='listings'><ListingsSkeleton title={title }/></div>
   }
 
   if(error){
-    return <div>Something went wrong Please return later.. </div>
+    return <div className='listings'><ListingsSkeleton title={title } error/></div>
   }
+
+  const deleteListingErrorAlert=deleteListingError?<Alert message="Something went wrong try again later" 
+  type="error"  className="listings-alert"/>:null;
+;
+
 
   const deleteListingErrorMessage=deleteListingError?<h1>Failed to Delete the listing</h1>:null;
 
   const deleteListingLoadingMessage=deleteListingLoading?<h1>Deleting the listing...</h1>:null;
 
-  
+  const listingsList=listings?(
+    <List
+    itemLayout="horizontal"
+    dataSource={listings}
+    renderItem={listing => (
+      <List.Item actions={[<Button  type="primary" onClick={()=>handledeleteListings(listing.id)}>Delete </Button>]}>
+        <List.Item.Meta
+          title={listing.title}
+          description={listing.address}
+          avatar={<Avatar src={listing.image} shape="square" size={48}/>}
+        />
+      </List.Item>
+    )}
+  />
+
+  ):null;
 
 
   return (
-    <div>
+    <div className='listings'>
+      <Spin spinning={deleteListingLoading}>
+        {deleteListingErrorAlert}
     <h1>{title}</h1>
-
- 
-    <div>
-      <ul>
-      {
-        
-        listings?.map((listing)=>(
-          <>
-          <li key={listing.id}>{listing.title} {listing.price}</li>
-          <button onClick={()=>handledeleteListings(listing.id)}>Delete</button>
-          </>
-         
-        ))
-      }
-      </ul>
-      <div>
+      {listingsList}
       {deleteListingErrorMessage}
-      {deleteListingLoadingMessage}
+      </Spin>
       </div>
-    </div>
-    </div>
+
   );
 }

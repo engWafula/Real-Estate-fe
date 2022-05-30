@@ -3,16 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@apollo/client": "^3.6.5",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.2.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/graphql": "^14.5.0",
-    "@types/jest": "^27.5.1",
-    "@types/node": "^16.11.36",
-    "@types/react": "^18.0.9",
-    "@types/react-dom": "^18.0.5",
-    "graphql": "^15.5.1.",
+    "antd": "^4.20.7",
+    "graphql": "^15.0.0",
     "graphql-tag": "^2.12.6",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -26,7 +18,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "codegen:schema": "npx apollo client:download-schema --endpoint=http://localhost:9000/api",
-    "codegen:generate": ""
+    "codegen:generate": "npx apollo client:codegen  --localSchemaFile=schema.json  --includes=src/**/*.tsx  --target=typescript "
   },
   "eslintConfig": {
     "extends": [
@@ -48,9 +40,15 @@
   },
   "proxy": "http://localhost:9000",
   "devDependencies": {
-    "apollo": "^2.34.0"
-  },
-  "resolutions": {
-    "graphql": "^15.5.1."
+    "@apollo/client": "^3.6.5",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/graphql": "^14.5.0",
+    "@types/jest": "^27.5.1",
+    "@types/node": "^16.11.36",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.5",
+    "apollo": "^2.12.2"
   }
 }
