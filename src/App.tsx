@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
-import {Listings,Home,Host,Listing,User,NotFound} from './sections';
+import {Listings,Home,Host,Listing,User,NotFound,Login} from './sections';
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
       <Route exact path='/listing/:id' component={Listing}/>
       <Route exact path='/listings/:location?' component={Listings}/>
       <Route exact path='/user/:id' component={User}/>
+      <Route exact path='/login' component={Login}/>
       <Route  component={NotFound}/>
     </Switch>
   </Router>
