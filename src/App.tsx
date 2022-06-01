@@ -1,11 +1,19 @@
 import React from 'react';
-import Listings from './sections/Listings/Listings';
+import { BrowserRouter as Router,Route,Switch } from 'react-router-dom';
+import {Listings,Home,Host,Listing,User,NotFound} from './sections';
 
 function App() {
   return (
-  <div>
-    <Listings title="Hello wafula" />
-  </div>
+  <Router>
+    <Switch>
+      <Route exact path='/' component={Home}/>
+      <Route exact path='/host' component={Host}/>
+      <Route exact path='/listing/:id' component={Listing}/>
+      <Route exact path='/listings/:location?' component={Listings}/>
+      <Route exact path='/user/:id' component={User}/>
+      <Route  component={NotFound}/>
+    </Switch>
+  </Router>
   );
 }
 

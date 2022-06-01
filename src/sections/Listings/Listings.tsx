@@ -39,7 +39,7 @@ const DELETE_LISTING= gql`
     }
   }`
 
-export default function  Listings({title}:Props) {
+export  function  Listings({title}:Props) {
 
   const {data,refetch,loading,error}=useQuery<ListingsData>(LISTING);
   const [deleteListings,{loading:deleteListingLoading,error:deleteListingError}]=useMutation<deleteListingData,deleteListingVariables>(DELETE_LISTING)
