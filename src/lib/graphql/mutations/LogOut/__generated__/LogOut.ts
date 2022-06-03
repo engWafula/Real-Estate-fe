@@ -7,6 +7,15 @@
 // GraphQL mutation operation: LogOut
 // ====================================================
 
+export interface LogOut_logOut {
+  __typename: "Viewer";
+  token: string | null;
+  id: string | null;
+  avatar: string | null;
+  didRequest: boolean;
+  hasWallet: boolean | null;
+}
+
 export interface LogOut {
-  logOut: string;
+  logOut: LogOut_logOut;
 }
