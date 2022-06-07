@@ -31,9 +31,9 @@ export const Login = ({ setViewer }: Props) => {
   ] = useMutation<LogInData, LogInVariables>(LOG_IN, {
     onCompleted: (data) => {
 
-      if ( data && data.logIn) {
+      if ( data && data.logIn && data.logIn.token) {
         setViewer(data.logIn);
-        // sessionStorage.setItem("token", data.logIn.token);
+       sessionStorage.setItem("token", data.logIn.token);
         displaySuccessNotification("You've successfully logged in!");
       }
     }
@@ -108,7 +108,7 @@ export const Login = ({ setViewer }: Props) => {
         </button>
         <Text type="secondary">
           Note: By signing in, you'll be redirected to the Google consent form to sign in
-          with your Google account.
+          with your Google account!.
         </Text>
       </Card>
     </Content>

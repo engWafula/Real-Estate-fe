@@ -1,14 +1,32 @@
 // import React from 'react';
 import { render } from "react-dom";
 import ReactDOM from "react-dom/client";
-import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
+import { ApolloProvider, ApolloClient, InMemoryCache,createHttpLink } from "@apollo/client";
+import { setContext } from '@apollo/client/link/context';
 import App from './App';
 import "./styles/index.css";
 import reportWebVitals from "./reportWebVitals";
 
+
+const httpLink = createHttpLink({
+  uri: '/api'
+});
+
+
+
+const authLink = setContext((request, { headers }) => {
+  const token = sessionStorage.getItem("token");
+  return {
+    headers: {
+      "X-CSRF-TOKEN": token || ""
+    }
+  }
+});
+
 const client = new ApolloClient({
-  uri: "/api",
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
+
 });
 
 
