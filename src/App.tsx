@@ -76,9 +76,9 @@ function App() {
 
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/host" component={Host} />
-          <Route path="/listing/:id" component={Listing} />
-          <Route path="/listings/:location?" component={Listings} />
+          <Route exact  path="/host" component={Host} />
+          <Route exact  path="/listing/:id" component={Listing} />
+          <Route exact path="/listings/:location?" component={Listings} />
           <Route
             exact
             path="/login"

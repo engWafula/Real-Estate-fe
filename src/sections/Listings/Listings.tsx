@@ -16,87 +16,88 @@ interface Props{
   title: string;
 }
 
-const LISTING= gql`
-  query Listings{
-    listings{
-    title
-    id
-    image
-    address
-    price
-    numOfGuests
-    numOfBeds
-  }
-}
-`
+// const LISTING= gql`
+//   query Listings{
+//     listings{
+//     title
+//     id
+//     image
+//     address
+//     price
+//     numOfGuests
+//     numOfBeds
+//   }
+// }
+// `
 
-const DELETE_LISTING= gql`
-  mutation DeleteListing($id: ID!){
-    deleteListing(id: $id){
-      id
-      title
-      image
-    }
-  }`
+// const DELETE_LISTING= gql`
+//   mutation DeleteListing($id: ID!){
+//     deleteListing(id: $id){
+//       id
+//       title
+//       image
+//     }
+//   }`
 
 export  function  Listings({title}:Props) {
 
-  const {data,refetch,loading,error}=useQuery<ListingsData>(LISTING);
-  const [deleteListings,{loading:deleteListingLoading,error:deleteListingError}]=useMutation<deleteListingData,deleteListingVariables>(DELETE_LISTING)
+//   const {data,refetch,loading,error}=useQuery<ListingsData>(LISTING);
+//   const [deleteListings,{loading:deleteListingLoading,error:deleteListingError}]=useMutation<deleteListingData,deleteListingVariables>(DELETE_LISTING)
 
 
-  const handledeleteListings=async(id:string)=>{
+//   const handledeleteListings=async(id:string)=>{
 
-  await  deleteListings({variables:{id}})
-  refetch();
-  }
+//   await  deleteListings({variables:{id}})
+//   refetch();
+//   }
   
 
-  const listings=data?data.listings:null;
+//   const listings=data?data.listings:null;
 
-  if(loading){
-    return <div className='listings'><ListingsSkeleton title={title }/></div>
-  }
+//   if(loading){
+//     return <div className='listings'><ListingsSkeleton title={title }/></div>
+//   }
 
-  if(error){
-    return <div className='listings'><ListingsSkeleton title={title } error/></div>
-  }
+//   if(error){
+//     return <div className='listings'><ListingsSkeleton title={title } error/></div>
+//   }
 
-  const deleteListingErrorAlert=deleteListingError?<Alert message="Something went wrong try again later" 
-  type="error"  className="listings-alert"/>:null;
-;
+//   const deleteListingErrorAlert=deleteListingError?<Alert message="Something went wrong try again later" 
+//   type="error"  className="listings-alert"/>:null;
+// ;
 
 
-  const deleteListingErrorMessage=deleteListingError?<h1>Failed to Delete the listing</h1>:null;
+//   const deleteListingErrorMessage=deleteListingError?<h1>Failed to Delete the listing</h1>:null;
 
-  const deleteListingLoadingMessage=deleteListingLoading?<h1>Deleting the listing...</h1>:null;
+//   const deleteListingLoadingMessage=deleteListingLoading?<h1>Deleting the listing...</h1>:null;
 
-  const listingsList=listings?(
-    <List
-    itemLayout="horizontal"
-    dataSource={listings}
-    renderItem={listing => (
-      <List.Item actions={[<Button  type="primary" onClick={()=>handledeleteListings(listing.id)}>Delete </Button>]}>
-        <List.Item.Meta
-          title={listing.title}
-          description={listing.address}
-          avatar={<Avatar src={listing.image} shape="square" size={48}/>}
-        />
-      </List.Item>
-    )}
-  />
+//   const listingsList=listings?(
+//     <List
+//     itemLayout="horizontal"
+//     dataSource={listings}
+//     renderItem={listing => (
+//       <List.Item actions={[<Button  type="primary" onClick={()=>handledeleteListings(listing.id)}>Delete </Button>]}>
+//         <List.Item.Meta
+//           title={listing.title}
+//           description={listing.address}
+//           avatar={<Avatar src={listing.image} shape="square" size={48}/>}
+//         />
+//       </List.Item>
+//     )}
+//   />
 
-  ):null;
+//   ):null;
 
 
   return (
-    <div className='listings'>
-      <Spin spinning={deleteListingLoading}>
+    <div>
+      {/* <Spin spinning={deleteListingLoading}>
         {deleteListingErrorAlert}
     <h1>{title}</h1>
       {listingsList}
       {deleteListingErrorMessage}
-      </Spin>
+      </Spin> */}
+      listing
       </div>
 
   );
