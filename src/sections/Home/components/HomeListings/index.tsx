@@ -8,6 +8,7 @@ interface Props {
     listings: Listings["listings"]["result"];
 }
 
+
 const { Title } = Typography;
 
 export function HomeListings({ title, listings }: Props) {
@@ -25,9 +26,11 @@ export function HomeListings({ title, listings }: Props) {
                 }}
                 dataSource={listings}
                 renderItem={(listing) => (
-                    <List.Item>
+                    <div className="holder">
+                    <List.Item className="listing__items">
                         <ListingCard listing={listing} />
                     </List.Item>
+                    </div>
                 )}
             />
         </div>

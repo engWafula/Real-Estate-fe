@@ -143,6 +143,8 @@
 }
 .home-hero {
   width: 100%;
+  align-items: center;
+  justify-content: center;
 }
 /* .listings{
   display: flex;
@@ -220,6 +222,8 @@
   /* background-image: url(/static/media/map-background.c21df147.jpg); */
   background-repeat: no-repeat;
   background-position: 10% 0;
+  align-items: center;
+  justify-content: center;
 }
 @media (max-width: 75em) {
   .home {
@@ -617,8 +621,17 @@
   margin-bottom: 20px;
 }
 .user {
-  padding: 60px 120px;
+  padding: 60px 100px;
 }
+
+/* .listing__items{
+  flex: 50%;
+  position: relative;
+}
+
+.holder{
+  display: flex;
+} */
 @media (max-width: 75em) {
   .user {
     padding-left: 20px;

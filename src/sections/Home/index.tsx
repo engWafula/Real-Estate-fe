@@ -56,7 +56,7 @@ const renderListingsSection=()=> {
               title="Premium Listings"
               listings={data.listings.result}
           />
-      );
+      )
   }
 
   return null;

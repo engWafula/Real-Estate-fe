@@ -9,6 +9,7 @@ import {
 } from "./lib/graphql/mutations/LogIn/__generated__/LogIn";
 import {
   AppHeader,
+  Stripe,
   Listings,
   Home,
   Host,
@@ -85,8 +86,12 @@ function App() {
             render={(props) => <Login {...props} setViewer={setViewer} />}
           />
           <Route exact path="/user/:id" 
-          render={(props) => <User {...props} viewer={viewer} />}
+          render={(props) => <User {...props} setViewer={setViewer} viewer={viewer} />}
           />
+                <Route  exact path="/stripe" 
+                     render={(props) => <Stripe {...props} viewer={viewer} setViewer={setViewer} />}
+                />
+        
           <Route component={NotFound} />
         </Switch>
       </Layout>

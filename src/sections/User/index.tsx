@@ -17,19 +17,21 @@ interface MatchParams {
 
 interface Props {
   viewer: Viewer;
+  setViewer: (viewer: Viewer) => void;
 }
 
 const { Content } = Layout;
 const PAGE_LIMIT = 4;
 
 export function User({
+  setViewer,
   viewer,
   match,
 }: Props & RouteComponentProps<MatchParams>) {
   const [listingsPage, setListingsPage] = useState(1);
   const [bookingsPage, setBookingsPage] = useState(1);
 
-  const { data, loading, error } = useQuery<UserData, UserVariables>(USER, {
+  const { data, loading, error,refetch } = useQuery<UserData, UserVariables>(USER, {
     variables: {
       id: match.params.id,
       bookingsPage,
@@ -46,8 +48,14 @@ export function User({
   const userListings = user ? user.listings : null;
   const userBookings = user ? user.bookings : null;
 
+  const handleUserRefetch = async () => {
+    await refetch();
+  }
+
   const userProfileElement = user ? (
-    <UserProfile user={user} viewerIsUser={viewerIsUser} />
+    <UserProfile user={user} viewer={viewer} setViewer={setViewer} 
+    handleUserRefetch={handleUserRefetch} 
+    viewerIsUser={viewerIsUser} />
   ) : null;
 
   const userListingsElement = userListings ? (
@@ -76,6 +84,10 @@ export function User({
     );
   }
 
+  const stripeError= new URL(window.location.href).searchParams.get("stripe_error");
+
+  const stripeErrorElement = stripeError ? (<ErrorBanner message="We had trouble connecting with Stripe. Please try again." />) : null;
+
   if (error) {
     return (
       <Content className="user">
@@ -87,6 +99,7 @@ export function User({
 
   return (
     <Content className="user">
+      {stripeErrorElement}
       <Row gutter={12} justify="space-between">
         <Col xs={24}>{userProfileElement}</Col>
         <Col xs={24}>
