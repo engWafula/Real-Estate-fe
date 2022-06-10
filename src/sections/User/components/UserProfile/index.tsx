@@ -69,6 +69,7 @@ export function UserProfile({ user,viewerIsUser,viewer,setViewer,handleUserRefet
       </Paragraph>
       <Button
          type="primary"
+         danger
         className="user-profile__details-cta"
         loading={loading}
         onClick={() => disconnectStripe()}
