@@ -37,7 +37,7 @@ export function ListingCard({ listing }: Props) {
             <span>/month</span>
           </Title>
           <Text strong ellipsis className="listing-card__title">
-          {title.length > 30 ? `${title.substring(0, 30)}...` : title}
+          {title.length > 28 ? `${title.substring(0, 28)}...` : title}
           </Text>
           <Text  ellipsis className="listing-card__address">
           {address.length > 30 ? `${address.substring(0, 30)}...` : address}
