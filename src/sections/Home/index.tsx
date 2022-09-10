@@ -87,14 +87,14 @@ const renderListingsSection=()=> {
                 </Title>
                 <Row gutter={12} className="home-hero__cards">
                     <Col xs={24} sm={12}>
-                        <Link to="/listings/san%20fransisco">
+                        <Link to="/listings/mbale">
                             <div className="home__listings-img-cover">
                             <Card  cover={<img src={mbaleImage}  className="home__listings-img" alt="entebbe" />}>Week or two trip to the mountain Elgon</Card>
                             </div>
                         </Link>
                     </Col>
                     <Col xs={24} sm={12}>
-                        <Link to="/listings/cancún">
+                        <Link to="/listings/mbarara">
                             <div className="home__listings-img-cover">
                             <Card  cover={<img src={mbararaImage}  className="home__listings-img" alt="entebbe" />}>Have a trip to the land of Milk</Card>
 

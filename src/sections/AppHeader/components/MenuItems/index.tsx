@@ -51,11 +51,13 @@ export  function MenuItems({viewer,setViewer}:Props) {
           Profile
         </Link>
       </Item>
+      <Link to="/">
       <Item key="/logout">
         <div onClick={handleLogOut} >
         <LogoutOutlined /> Log Out
         </div>
       </Item>
+      </Link>
     </SubMenu>
   ) : (
     <Item>
