@@ -45,12 +45,12 @@ export function HomeHero({onSearch}:Props) {
           <Card cover={<img src={entebbeImage} alt="entebbe" />}>Entebbe</Card>
           </Link>
         </Col>
-        <Col xs={0} md={6}>
+        <Col xs={12} md={6}>
         <Link to="/listings/gulu">
           <Card cover={<img src={guluImage}  alt="gulu"/>}>Gulu</Card>
           </Link>
         </Col>
-        <Col xs={0} md={6}>
+        <Col xs={12} md={6}>
         <Link to="/listings/jinja">
           <Card cover={<img src={jinjaImage} alt="jinja" />}>Jinja</Card>
           </Link>

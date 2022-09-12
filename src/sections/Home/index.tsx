@@ -1,6 +1,6 @@
 import React from "react";
 import { RouteComponentProps } from "react-router-dom";
-import { Card, Col, Input, Row, Typography,Layout } from "antd";
+import { Card, Col, Input, Row, Typography,Layout, Affix } from "antd";
 import { useQuery } from "@apollo/client";
 import { HomeHero, HomeListingsSkeleton } from "./components";
 import map from "./assets/map-background.jpg";
@@ -15,6 +15,7 @@ import { HomeListings } from "./components";
 import mbaleImage from "./assets/mbale.jpg";
 
 import mbararaImage from "./assets/mbarara.jpg";
+import { Footer } from "../Footer";
 
 
 const {Content}=Layout;
@@ -62,12 +63,13 @@ const renderListingsSection=()=> {
   return null;
 }
   return (
+    <>
     <Content className="home" style={{backgroundImage:`url(${map})`}}>
       <HomeHero  onSearch={onSearch} />
 
       <div className="home__cta-section">
                 <Title level={2} className="home__cta-section-title">
-                    Your guide to help you find the perfect home
+                    We guide to help you find the perfect home
                 </Title>
                 <Paragraph>
                     Helping you make the best decision in renting your best locations
@@ -83,7 +85,7 @@ const renderListingsSection=()=> {
               {renderListingsSection()}
             <div className="home__listings">
                 <Title level={4} className="home__listings-title">
-                    Listing of any kind
+                    Explore Houses in Other Popular Cities
                 </Title>
                 <Row gutter={12} className="home-hero__cards">
                     <Col xs={24} sm={12}>
@@ -103,6 +105,11 @@ const renderListingsSection=()=> {
                     </Col>
                 </Row>
             </div>
+    
     </Content>
+    <Affix offsetTop={0} className="app_affix-header">
+          <Footer/>
+        </Affix>
+    </>
   )
 };

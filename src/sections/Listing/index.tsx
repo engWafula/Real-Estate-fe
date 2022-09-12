@@ -16,6 +16,7 @@ import {
   ListingBookings,
   ListingCreateBooking,
 } from "./components";
+import { Footer } from "../Footer";
 
 interface MatchProps {
   id: string;
@@ -86,6 +87,7 @@ export function Listing({ match }: RouteComponentProps<MatchProps>) {
   ) : null;
 
   return (
+    <>
     <Content className="listing">
       <Row gutter={24} justify="space-between" className="content_row">
         <Col xs={24} lg={14}>
@@ -97,5 +99,7 @@ export function Listing({ match }: RouteComponentProps<MatchProps>) {
         </Col>
       </Row>
     </Content>
+    <Footer/>
+    </>
   );
 }

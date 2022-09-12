@@ -4,6 +4,7 @@ import {Listing as ListingData} from "../../../../lib/graphql/queries/Listing/__
 import { Link } from "react-router-dom";
 import { iconColor } from "../../../../lib/utils";
 import {EnvironmentOutlined} from "@ant-design/icons"
+import { Footer } from '../../../Footer';
 
 
 
@@ -28,6 +29,7 @@ export  function ListingDetails({listing}:Props) {
       } = listing;
 
   return (
+    <>
     <div className="listing-details">
       <div
         className="listing-details__image"
@@ -79,5 +81,6 @@ export  function ListingDetails({listing}:Props) {
         </Paragraph>
       </div>
     </div>
+    </>
   )
 }
