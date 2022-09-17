@@ -8,10 +8,8 @@
 //==============================================================
 
 export enum ListingType {
-  APARTMENT = "APARTMENT",
-  HOSTEL = "HOSTEL",
-  HOTEL = "HOTEL",
-  RENTAL = "RENTAL",
+  COMMERCIAL = "COMMERCIAL",
+  RESIDENTIAL = "RESIDENTIAL",
 }
 
 export enum ListingsFilter {

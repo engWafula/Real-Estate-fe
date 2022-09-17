@@ -196,25 +196,13 @@
         "interfaces": null,
         "enumValues": [
           {
-            "name": "APARTMENT",
+            "name": "COMMERCIAL",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "RENTAL",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "HOSTEL",
-            "description": null,
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "HOTEL",
+            "name": "RESIDENTIAL",
             "description": null,
             "isDeprecated": false,
             "deprecationReason": null
