@@ -35,6 +35,13 @@ export interface LogInInput {
   code: string;
 }
 
+export interface createBookingInput {
+  id: string;
+  source: string;
+  checkIn: string;
+  checkOut: string;
+}
+
 //==============================================================
 // END Enums and Input Objects
 //==============================================================

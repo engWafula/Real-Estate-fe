@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { LOG_IN } from "./lib/graphql/mutations";
 import { useMutation } from "@apollo/client";
-
+import {StripeProvider,Elements} from "react-stripe-elements"
 import {
   LogIn as LogInData,
   LogInVariables,
@@ -71,6 +71,7 @@ function App() {
 
 
   return (
+    <StripeProvider apiKey={process.env.REACT_APP_S_PUBLISHABLE_KEY as string} >
     <Router>
       <Layout id="app">
         {logInErrorElement}
@@ -86,7 +87,7 @@ function App() {
           <Route
             exact
             path="/listing/:id"
-            render={(props) => <Listing {...props} viewer={viewer} />}
+            render={(props) =><Elements><Listing {...props} viewer={viewer} /></Elements> }
           />
           <Route exact path="/listings/:location?" component={Listings} />
           <Route
@@ -105,6 +106,7 @@ function App() {
         </Switch>
       </Layout>
     </Router>
+    </StripeProvider>
   );
 }
 

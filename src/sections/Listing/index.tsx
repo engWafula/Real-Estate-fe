@@ -15,7 +15,7 @@ import {
   ListingDetails,
   ListingBookings,
   ListingCreateBooking,
-  ListingCreateBookingModal,
+  WrappedListingCreateBookingModal as ListingCreateBookingModal,
 } from "./components";
 import { Footer } from "../Footer";
 
@@ -45,6 +45,15 @@ export function Listing({viewer, match }:Props & RouteComponentProps<MatchProps>
       bookingsPage,
     },
   });
+
+  const clearBookingData = () => {
+    setModalVisible(false);
+    setCheckInDate(null);
+    setCheckOutDate(null);
+  }
+  const handleListingRefetch = async () => {
+    await refetch();
+  }
 
   if (loading) {
     return (
@@ -94,11 +103,14 @@ export function Listing({viewer, match }:Props & RouteComponentProps<MatchProps>
 
   const listingCreateBookingModalElement = listing && checkInDate && checkOutDate ? (
     <ListingCreateBookingModal
+    clearBookingData={clearBookingData}
+    id={listing.id}
      price={listing?.price}
      checkOutDate={checkOutDate}
       checkInDate={checkInDate}
       modalVisible={modalVisible}
       setModalVisible={setModalVisible}
+      handleListingRefetch={handleListingRefetch}
       />
   ) : null;
 
