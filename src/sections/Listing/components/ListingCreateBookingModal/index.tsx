@@ -41,7 +41,7 @@ const [createBooking, { loading }] = useMutation<CreateBookingData, CreateBookin
   },
 onError: (error) => {
   displayErrorMessage("Sorry! We weren't able to create your booking. Please try again later!");
-  console.log(error);
+  
 }
 })
 
