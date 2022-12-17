@@ -49,7 +49,7 @@ export function Host({ viewer }: Props) {
     HostListingVariables
   >(HOST_LISTING, {
     onError: (error) =>{
-      console.log(error)
+      console.log("Cannot host a listing=====>",error)
       displayErrorMessage(
         "Sorry! We were'nt able to create your listing. Please try again later."
       )
