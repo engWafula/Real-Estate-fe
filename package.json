@@ -2,7 +2,7 @@
   "name": "Tusenguke_client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:9000",
+  "proxy": "https://tusenguke-jull8qecm-engwafula.vercel.app",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@stripe/react-stripe-js": "^1.14.1",
